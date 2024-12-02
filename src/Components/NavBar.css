@@ -141,6 +141,7 @@ a {
 .btn:hover:before {
   left: 100%;
 }
+<<<<<<< HEAD
 @media (max-width: 768px) {
   .video-bg {
     height: auto;
@@ -235,3 +236,6 @@ a {
     height: 50px;
   }
 }
+=======
+
+>>>>>>> 2191c3f (Initial commit for Home4Paws project)
