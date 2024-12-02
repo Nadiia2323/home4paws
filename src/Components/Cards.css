@@ -1,0 +1,52 @@
+.cards-container {
+    padding-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 300px;
+    height: 350px;
+    background: rgba(28, 18, 11, 0.397);
+}
+.card img {
+    width: 250px;
+    height: 250px;
+}
+.pet-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.pet-name{
+    color: white;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.984);
+}
+.pet-age {
+    background: rgba(51, 39, 29, 0.484);
+}
+.filters-container{
+    gap: 1rem;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    font-size: 18px;
+    color: white;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.984);
+        background-color:rgba(28, 18, 11, 0.397); ;
+}
+.container-for-pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}

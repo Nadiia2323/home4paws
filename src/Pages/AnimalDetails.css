@@ -1,0 +1,28 @@
+#root{
+    background: rgba(96, 72, 54, 0.77);
+}
+.container-for-all{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    background: rgba(28, 18, 11, 0.397);
+    padding-top: 15px;
+    padding-left: 15px;
+
+}
+.title-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 26px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.984);
+        background: rgba(28, 18, 11, 0.397);
+      
+        height: 30px;
+}
+.container-info {
+    color: white;
+    font-size: 20px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.984);
+}
