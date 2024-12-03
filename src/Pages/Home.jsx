@@ -1,4 +1,3 @@
-
 import { useContext, useState } from "react";
 import { AuthContext } from "../Components/Context/AuthContext";
 import React from "react";
@@ -15,10 +14,10 @@ function Home() {
   const handleButtonClick = () => {
     if (!contextValue.user) {
       setShowPopup(true);
-      console.log('not a user');
+      console.log("not a user");
     } else {
-      navigate('/content')
-      console.log('user');
+      navigate("/content");
+      console.log("user");
     }
   };
 
@@ -26,8 +25,8 @@ function Home() {
     setShowPopup(false);
   };
   const handleButtonRegister = () => {
-    navigate('/registration')
-  }
+    navigate("/registration");
+  };
 
   return (
     <>
@@ -50,8 +49,10 @@ function Home() {
                 <span className="close" onClick={closePopup}>
                   &times;
                 </span>
-                <p>Please, register first.</p>
-                <button onClick={handleButtonRegister}>register</button>
+                <p className="message">Please, register first.</p>
+                <button className="btn-register" onClick={handleButtonRegister}>
+                  register
+                </button>
               </div>
             </div>
           )}
