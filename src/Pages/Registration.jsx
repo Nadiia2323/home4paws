@@ -88,7 +88,9 @@ export default function Registration() {
             </>
           )}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <button onClick={handleSubmit}>{registerButton}</button>
+          <button className="button-register" onClick={handleSubmit}>
+            {registerButton}
+          </button>
           <button className="login-register" onClick={toggleHasAccount}>
             {buttonLabel}
           </button>
