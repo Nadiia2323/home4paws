@@ -1,28 +1,67 @@
-#root{
-    background: rgba(96, 72, 54, 0.77);
+#root {
+  background: rgba(96, 72, 54, 0.77);
 }
-.container-for-all{
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    background: rgba(28, 18, 11, 0.397);
-    padding-top: 15px;
-    padding-left: 15px;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
+.container-for-all {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 15px;
+  background: rgba(28, 18, 11, 0.8);
+  border-radius: 8px;
+  height: 100%;
 }
-.title-name{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 26px;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.984);
-        background: rgba(28, 18, 11, 0.397);
-      
-        height: 30px;
+
+.container-photo img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
+
 .container-info {
-    color: white;
-    font-size: 20px;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.984);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: white;
+  font-size: 18px;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.container-info p {
+  margin: 0;
+  background: rgba(51, 39, 29, 0.7);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.title-name {
+  font-size: 28px;
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: center;
+  background: rgba(51, 39, 29, 0.8);
+  color: white;
+  border-radius: 8px;
+}
+
+.fav-btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  background: rgba(96, 72, 54, 0.9);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.fav-btn :hover {
+  background: rgba(96, 72, 54, 1);
 }

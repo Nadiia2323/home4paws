@@ -92,26 +92,45 @@ function AnimalDetails() {
   return (
     <div>
       <NavBar />
-
-      {!isLoadingInfo && animalInfo && (
+      {!isLoadingInfo && animalInfo ? (
         <div>
           <h5 className="title-name">Name: {animalInfo.animal.name}</h5>
           <div className="container-for-all">
             <div className="container-photo">
-              <img src={animalInfo.animal.photos[0].large} alt="" />
+              {animalInfo.animal.photos.length > 0 ? (
+                <img
+                  src={animalInfo.animal.photos[0].large}
+                  alt={`${animalInfo.animal.name}`}
+                />
+              ) : (
+                <p className="info-text">No photo available</p>
+              )}
             </div>
             <div className="container-info">
-              <p clas>Species: {animalInfo.animal.species}</p>
-              <p>Age: {animalInfo.animal.age}</p>
-              <p>Beed: {animalInfo.animal.breeds.primary}</p>
-              <p>Gender: {animalInfo.animal.gender}</p>
-              <p>Coat: {animalInfo.animal.coat}</p>
-              <p>Color: {animalInfo.animal.colors.primary}</p>
-              <p>Description: {animalInfo.animal.description}</p>
-              <button onClick={handleClick}> {buttonLabel}</button>
+              <p className="info-text">Species: {animalInfo.animal.species}</p>
+              <p className="info-text">Age: {animalInfo.animal.age}</p>
+              <p className="info-text">
+                Breed: {animalInfo.animal.breeds.primary || "Unknown"}
+              </p>
+              <p className="info-text">Gender: {animalInfo.animal.gender}</p>
+              <p className="info-text">
+                Coat: {animalInfo.animal.coat || "Not specified"}
+              </p>
+              <p className="info-text">
+                Color: {animalInfo.animal.colors.primary || "Unknown"}
+              </p>
+              <p className="info-text">
+                Description:{" "}
+                {animalInfo.animal.description || "No description available."}
+              </p>
+              <button className="fav-btn" onClick={handleClick}>
+                {buttonLabel}
+              </button>
             </div>
           </div>
         </div>
+      ) : (
+        <p className="info-text">Loading animal details...</p>
       )}
     </div>
   );
