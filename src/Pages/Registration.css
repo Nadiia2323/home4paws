@@ -79,7 +79,7 @@ h3 {
   text-align: center;
 }
 
-label {
+.reg-label {
   align-self: flex-start;
   font-size: 16px;
   color: #4b3e35;

@@ -11,36 +11,91 @@ export default function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState([]); // Массив для ошибок
   const [hasAccount, setHasAccount] = useState(false);
 
   const heading = !hasAccount ? "Register" : "Login";
-
   const buttonLabel = !hasAccount
-    ? "already got an account? sign in instead"
-    : "No account? sign up";
+    ? "Already got an account? Sign in instead"
+    : "No account? Sign up";
   const registerButton = !hasAccount ? "Register" : "Login";
 
-  const validatePassword = (password, repeatPassword) => {
-    return password === repeatPassword;
-  };
+  const toggleHasAccount = () => setHasAccount(!hasAccount);
 
-  function toggleHasAccount() {
-    setHasAccount(!hasAccount);
-  }
+  // const validatePassword = (password, repeatPassword) =>
+  //   password === repeatPassword;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!hasAccount) {
-      const validPassword = validatePassword(password, repeatPassword);
-      if (validPassword) {
-        console.log("Attempting to sign up with: ", email, password);
-        signup(email, password);
-      } else {
-        setErrorMessage("Passwords do not match");
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(value)) {
+      if (!errorMessage.includes("Invalid email address.")) {
+        setErrorMessage((prevErrors) => [
+          ...prevErrors,
+          "Invalid email address.",
+        ]);
       }
     } else {
-      signin(email, password);
+      setErrorMessage((prevErrors) =>
+        prevErrors.filter((err) => err !== "Invalid email address.")
+      );
+    }
+
+    setEmail(value);
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+
+    if (value.length < 6) {
+      if (!errorMessage.includes("Password must be at least 6 characters.")) {
+        setErrorMessage((prevErrors) => [
+          ...prevErrors,
+          "Password must be at least 6 characters.",
+        ]);
+      }
+    } else {
+      setErrorMessage((prevErrors) =>
+        prevErrors.filter(
+          (err) => err !== "Password must be at least 6 characters."
+        )
+      );
+    }
+
+    setPassword(value);
+  };
+
+  const handleRepeatPasswordChange = (e) => {
+    setRepeatPassword(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newErrors = [];
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.push("Invalid email address.");
+    }
+    if (password.length < 6) {
+      newErrors.push("Password must be at least 6 characters.");
+    }
+    if (!hasAccount && password !== repeatPassword) {
+      newErrors.push("Passwords do not match.");
+    }
+
+    setErrorMessage(newErrors);
+
+    if (newErrors.length === 0) {
+      try {
+        if (hasAccount) {
+          await signin(email, password);
+        } else {
+          await signup(email, password);
+        }
+      } catch (error) {
+        setErrorMessage([error.message]);
+      }
     }
   };
 
@@ -50,18 +105,6 @@ export default function Registration() {
     }
   }, [user, navigate]);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleRepeatPasswordChange = (e) => {
-    setRepeatPassword(e.target.value);
-  };
-
   return (
     <div className="registration-bg">
       <NavBar />
@@ -69,25 +112,49 @@ export default function Registration() {
       <div className="container-form">
         <div className="registration-form">
           <h3>{heading}</h3>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" onChange={handleEmailChange} />
-          <label htmlFor="password">Password</label>
+
+          {errorMessage.length > 0 && (
+            <div className="error-message">
+              {errorMessage.map((error, index) => (
+                <p key={index}>{error}</p>
+              ))}
+            </div>
+          )}
+
+          <label className="reg-label" htmlFor="email">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+
+          <label className="reg-label" htmlFor="password">
+            Password
+          </label>
           <input
             type="password"
             id="password"
+            value={password}
             onChange={handlePasswordChange}
           />
+
           {!hasAccount && (
             <>
-              <label htmlFor="repeatPass">Repeat Password</label>
+              <label className="reg-label" htmlFor="repeatPass">
+                Repeat Password
+              </label>
               <input
                 type="password"
                 id="repeatPass"
+                value={repeatPassword}
                 onChange={handleRepeatPasswordChange}
               />
             </>
           )}
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
+
           <button className="button-register" onClick={handleSubmit}>
             {registerButton}
           </button>
