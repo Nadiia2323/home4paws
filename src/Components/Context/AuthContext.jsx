@@ -40,6 +40,7 @@ export const AuthContextProvider = ({ children }) => {
       setUser(user);
     } catch (error) {
       console.error("Error during sign-in:", error);
+      throw error;
     }
   };
   const logout = () => {

@@ -11,7 +11,7 @@ export default function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState([]); // Массив для ошибок
+  const [errorMessage, setErrorMessage] = useState([]);
   const [hasAccount, setHasAccount] = useState(false);
 
   const heading = !hasAccount ? "Register" : "Login";
@@ -20,7 +20,10 @@ export default function Registration() {
     : "No account? Sign up";
   const registerButton = !hasAccount ? "Register" : "Login";
 
-  const toggleHasAccount = () => setHasAccount(!hasAccount);
+  const toggleHasAccount = () => {
+    setHasAccount(!hasAccount);
+    setErrorMessage([]);
+  };
 
   // const validatePassword = (password, repeatPassword) =>
   //   password === repeatPassword;
@@ -94,10 +97,14 @@ export default function Registration() {
           await signup(email, password);
         }
       } catch (error) {
-        setErrorMessage([error.message]);
+        setErrorMessage((prevErrors) => [
+          ...prevErrors,
+          "Authentication failed: " + error.message,
+        ]);
       }
     }
   };
+  console.log("errorMessage :>> ", errorMessage);
 
   useEffect(() => {
     if (user) {
