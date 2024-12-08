@@ -104,6 +104,7 @@ export default function Registration() {
       }
     }
   };
+
   console.log("errorMessage :>> ", errorMessage);
 
   useEffect(() => {
@@ -161,6 +162,12 @@ export default function Registration() {
               />
             </>
           )}
+          <button
+            className="forgot-password-link"
+            onClick={() => navigate("/password-reset")}
+          >
+            Forgot Password?
+          </button>
 
           <button className="button-register" onClick={handleSubmit}>
             {registerButton}

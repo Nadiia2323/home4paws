@@ -13,6 +13,7 @@ import { AuthContextProvider } from "./Components/Context/AuthContext.jsx";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Profile from "./Pages/Profile.jsx";
 import { FilterContextProvider } from "./Components/Context/FIlterContext.jsx";
+import PasswordReset from "./Pages/PasswordReset.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         <Profile />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "/password-reset",
+    element: <PasswordReset />,
   },
 ]);
 

@@ -2,7 +2,11 @@ import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, db } from "../../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { collection, getDocs } from "firebase/firestore";
 import useIsAuth from "../useIsAuth";
 
@@ -41,6 +45,14 @@ export const AuthContextProvider = ({ children }) => {
     } catch (error) {
       console.error("Error during sign-in:", error);
       throw error;
+    }
+  };
+  const resetPassword = async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      console.log("Password reset email sent.");
+    } catch (error) {
+      console.error("Error sending password reset email:", error);
     }
   };
   const logout = () => {
@@ -103,6 +115,7 @@ export const AuthContextProvider = ({ children }) => {
         user,
         signup,
         signin,
+        resetPassword,
         userChecked,
         logout,
         userFavorites,
