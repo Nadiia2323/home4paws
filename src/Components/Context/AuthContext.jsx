@@ -94,12 +94,9 @@ export const AuthContextProvider = ({ children }) => {
           console.log("user :>> ", user);
           getUserFavorites(user);
         }
-        // ...
       } else {
         console.log("no active user :>> ", user);
         setUser(null);
-        // User is signed out
-        // ...
       }
       setUserChecked(true);
     });
