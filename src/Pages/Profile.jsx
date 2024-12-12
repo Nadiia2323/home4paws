@@ -69,8 +69,10 @@ export default function Profile() {
       <h1>Profile: {user ? user.email : ""}</h1>
       <h2>Favorites:</h2>
       {isLoading ? (
-        <div class="lds-heart">
-          <div></div>
+        <div className="loading-container">
+          <div class="lds-heart">
+            <div></div>
+          </div>
         </div>
       ) : (
         <div className="fav-container">
