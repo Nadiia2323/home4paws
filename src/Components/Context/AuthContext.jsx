@@ -50,10 +50,7 @@ export const AuthContextProvider = ({ children }) => {
   const resetPassword = async (email) => {
     try {
       await sendPasswordResetEmail(auth, email);
-      console.log("Password reset email sent.");
-    } catch (error) {
-      console.error("Error sending password reset email:", error);
-    }
+    } catch (error) {}
   };
   const logout = () => {
     signOut(auth)
@@ -66,7 +63,6 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const getUserFavorites = async (currentUser) => {
-    console.log("user in get favs :>> ", currentUser);
     try {
       const querySnapshot = await getDocs(
         collection(db, "users", currentUser.email, "favorites")
@@ -76,26 +72,19 @@ export const AuthContextProvider = ({ children }) => {
         console.log(`${doc.id} => ${doc.data()}`);
         favoritesArray.push(doc.data());
       });
-      console.log("favoritesArray :>> ", favoritesArray);
+
       setUserFavorites(favoritesArray);
-    } catch (error) {
-      console.error("Error saving favorite:", error);
-    }
+    } catch (error) {}
   };
   const getActiveUser = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("active user :>> ", user);
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
         setUser(user);
         if (user.email) {
-          console.log("user :>> ", user);
           getUserFavorites(user);
         }
       } else {
-        console.log("no active user :>> ", user);
         setUser(null);
       }
       setUserChecked(true);
@@ -105,7 +94,7 @@ export const AuthContextProvider = ({ children }) => {
     setUserChecked(false);
     getActiveUser();
   }, []);
-  // console.log("userFavorites :>> ", userFavorites);
+
   return (
     <AuthContext.Provider
       value={{

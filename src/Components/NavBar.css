@@ -12,6 +12,14 @@
   left: 0;
   object-fit: cover;
 }
+.active {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.inactive {
+  color: #6c757d;
+}
 
 .navbar {
   display: flex;

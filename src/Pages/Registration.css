@@ -124,6 +124,8 @@ input:focus {
 .login-register {
   background-color: #4b3e35;
   color: #fff;
+  border: none;
+    border-radius: 5px;
 }
 
 .login-register:hover {
@@ -135,4 +137,16 @@ input:focus {
   font-size: 14px;
   font-weight: bold;
   margin-top: -10px;
+}
+
+.forgot-password-link{
+  
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(244, 142, 0, 0.8);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
