@@ -2,6 +2,7 @@ import { Outlet, useParams } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import useFetch from "../Components/useFetch";
 import "./AnimalDetails.css";
+import "./Profile.css";
 import { app, db } from "../firebaseConfig";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../Components/Context/AuthContext";
@@ -130,7 +131,11 @@ function AnimalDetails() {
           </div>
         </div>
       ) : (
-        <p className="info-text">Loading animal details...</p>
+        <div className="loading-container">
+          <div class="lds-heart">
+            <div></div>
+          </div>
+        </div>
       )}
     </div>
   );

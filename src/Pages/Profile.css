@@ -83,15 +83,6 @@
   z-index: 1000;
 }
 
-/* .loading-container {
-    width: 100%;
-    height: 100%;
-    padding-top: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 .lds-heart {
   display: inline-block;
   position: relative;
