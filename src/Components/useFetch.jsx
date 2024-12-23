@@ -12,20 +12,8 @@ const useFetch = (url) => {
 
     var urlencoded = new URLSearchParams();
     urlencoded.append("grant_type", "client_credentials");
-    urlencoded.append(
-      "client_id",
-      // VITE_CLIENT_ID
-      // "8chWq1iNwVsKezFDLmw8d4N93envu0j7Xa7dMljqH7mafph213"
-      // "ZXjyNDuuZAUVnf257xx4lj6PFYEv9T6MQl8A9iNOP3x47yUD3L"
-      "fRde8D5bc5TDoJZzRcXP6xQVbLA3oPZ0ruUa1zjgiN63uAHYCk"
-    );
-    urlencoded.append(
-      "client_secret",
-      // VITE_CLIENT_SECRET
-      // "zu5MOzBXJHYewOOrw9dZNT2x7dOd8R6BiIk1wO8U"
-      // "LVg9fTLFhFk01qFZK4ZY95aOm9ttjT4PX7x2qCas"
-      "qEuWZoQn2sVLhuCqaJBAH1Z0NAjObwUWbR5dQVJ7"
-    );
+    urlencoded.append("client_id", import.meta.env.VITE_CLIENT_ID);
+    urlencoded.append("client_secret", import.meta.env.VITE_CLIENT_SECRET);
 
     var requestOptions = {
       method: "POST",
