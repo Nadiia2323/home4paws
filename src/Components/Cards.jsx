@@ -2,8 +2,6 @@ import React from "react";
 import "./Cards.css";
 
 function Cards({ myData, onClick }) {
-  console.log("onClick :>> ", onClick);
-
   return (
     <div>
       <div className="cards-container">

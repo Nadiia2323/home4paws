@@ -12,12 +12,11 @@ function Content({ typesData: unreliableLinks }) {
   const typesData = unreliableLinks.types.filter((link) => {
     return !link.name.includes(" ");
   });
-  console.warn("typesData :>> ", typesData);
+
   const navigate = useNavigate();
 
   const handleAnimalClick = (animalId) => {
     navigate(`/animals/${animalId}`);
-    console.log("navigate :>> ", animalId);
   };
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -126,7 +125,7 @@ function Content({ typesData: unreliableLinks }) {
       <Outlet />
       {isLoading ? (
         <div className="loading-container">
-          <div class="lds-heart">
+          <div className="lds-heart">
             <div></div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "../Components/useFetch";
-import Content from "../Components/Content";
 import ContentContainer from "../Components/ContentContainer";
 
 const defaultState = {
@@ -30,8 +29,6 @@ function Config() {
   const { myData: sfBreedsData, isLoading: isLoadingsf } = useFetch(
     smallAndFurryBreedsUrl
   );
-  console.warn("typesData :>> ", typesData);
-  console.warn("dogBreedsData :>> ", dogBreedsData);
 
   // const [allBreedsState, setAllBreedsState] = useState({})
   const [typesState, setTypesState] = useState(null);
@@ -59,21 +56,7 @@ function Config() {
       setDataReady(true);
     }
   }, [dogBreedsData, catBreedsData, birdBreedsData, typesData, sfBreeds]);
-  console.log(
-    "dogBreeds, catBreeds, birdBreeds :>> ",
-    dogBreeds,
-    catBreeds,
-    birdBreeds
-  );
 
-  console.log("dataReady :>> ", dataReady);
-
-  console.log(
-    "birdBreedsData, catBreedsData, dogBreedsData :>> ",
-    birdBreedsData,
-    catBreedsData,
-    dogBreedsData
-  );
   return (
     <>
       {dataReady && (

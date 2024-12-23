@@ -1,23 +1,9 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import './App.css'
-
-import FetchData from '../FetchData'
-import MyFetch from './Components/Content'
-import NavBar from './Components/NavBar'
-// import Background from './Components/Background'
+import "./App.css";
 
 function App() {
-  
-
-  return (
-    <>
-      <NavBar />
-      {/* <Background/> */}
-      {/* <FetchData /> */}
-      <MyFetch/>
-      </>
-  )
+  return <></>;
 }
 
-export default App
+export default App;

@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("user :>> ", user);
+
         setUser(user);
       })
       .catch((error) => {
@@ -42,7 +42,7 @@ export const AuthContextProvider = ({ children }) => {
         password
       );
       const user = userCredential.user;
-      console.log("Signed in user:", user);
+
       setUser(user);
     } catch (error) {
       console.error("Error during sign-in:", error);
@@ -71,7 +71,6 @@ export const AuthContextProvider = ({ children }) => {
       );
       const favoritesArray = [];
       querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
         favoritesArray.push(doc.data());
       });
 

@@ -105,8 +105,6 @@ export default function Registration() {
     }
   };
 
-  console.log("errorMessage :>> ", errorMessage);
-
   useEffect(() => {
     if (user) {
       navigate("/content");

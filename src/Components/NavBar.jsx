@@ -23,7 +23,6 @@ function NavBar() {
       <h1 className="logo">Home4</h1>
       <h1 className="logo-part">Paws</h1>
 
-      {/* <NavLink to="/" activeClassName="active" className="nav-link"> */}
       <NavLink
         to="/"
         className={({ isActive }) => (isActive ? "active" : "inactive")}

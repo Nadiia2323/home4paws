@@ -21,17 +21,10 @@ function AnimalDetails() {
   const [cardId, setCardId] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const { animalId } = useParams();
-  console.log("animalId :>> ", animalId);
 
   const urlInfo = `https://api.petfinder.com/v2/animals/${animalId}`;
-  console.log("urlInfo :>> ", urlInfo);
 
   const { myData: animalInfo, isLoading: isLoadingInfo } = useFetch(urlInfo);
-
-  if (!isLoadingInfo) {
-    console.log("animalInfo :>> ", animalInfo);
-    console.log(" someinfo:>> ", animalInfo.animal.name);
-  }
 
   const handelFavorites = async () => {
     try {
@@ -132,7 +125,7 @@ function AnimalDetails() {
         </div>
       ) : (
         <div className="loading-container">
-          <div class="lds-heart">
+          <div className="lds-heart">
             <div></div>
           </div>
         </div>
